@@ -54,29 +54,29 @@ resource "aws_volume_attachment" "iacp_attach" {
   volume_id   = aws_ebs_volume.iacp_vol.id
 }
 
-resource "null_resource" "null_1" {
-  depends_on = [aws_instance.iacp_server]
+#resource "null_resource" "null_1" {
+#  depends_on = [aws_instance.iacp_server]
 
-  connection {
-        host	= aws_instance.iacp_server.public_ip
-        type     = "ssh"
-        user     = "ubuntu"
-        private_key = file(local.ssh_private_key_file)
-        timeout  = "20m"
-  }
+#  connection {
+#        host	= aws_instance.iacp_server.public_ip
+#        type     = "ssh"
+#        user     = "ubuntu"
+#        private_key = file(local.ssh_private_key_file)
+#        timeout  = "20m"
+#  }
 
-  provisioner "file" {
-      source = "./SCRIPTS/mount_vol.sh"
-      destination = "/var/tmp/mount_vol.sh"
-  }
+#  provisioner "file" {
+#      source = "./SCRIPTS/mount_vol.sh"
+#      destination = "/var/tmp/mount_vol.sh"
+#  }
 
-  provisioner "remote-exec" {
-      inline = [
-        "chmod +x /var/tmp/mount_vol.sh",
-        "sudo /var/tmp/mount_vol.sh ${aws_volume_attachment.iacp_attach.volume_id}",
-      ]
-  }
-}
+#  provisioner "remote-exec" {
+#      inline = [
+#        "chmod +x /var/tmp/mount_vol.sh",
+#        "sudo /var/tmp/mount_vol.sh ${aws_volume_attachment.iacp_attach.volume_id}",
+#      ]
+#  }
+#}
 
 # Load Balancer
 #
