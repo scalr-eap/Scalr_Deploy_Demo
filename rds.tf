@@ -39,12 +39,12 @@ resource "aws_db_parameter_group" "default" {
 }
 
 resource "aws_db_instance" "scalr_mysql" {
-  allocated_storage    = 750
+  allocated_storage    = 5
   storage_type         = "gp2"
   engine               = "mysql"
   engine_version       = "5.7"
   multi_az             = true
-  instance_class       = "db.t3.xlarge"
+  instance_class       = "db.t3.micro"
   name                 = "${var.name_prefix}scalr"
   username             = "scalr"
   password             = random_password.mysql_pw.result
