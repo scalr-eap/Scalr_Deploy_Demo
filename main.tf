@@ -2,9 +2,9 @@ provider "aws" {
     region     = var.region
 }
 
-locals {
-  ssh_private_key_file = "./ssh/id_rsa"
-}
+#locals {
+#  ssh_private_key_file = "./ssh/id_rsa"
+#}
 
 # Obtain the AMI for the region. CentOS7 and AWS Linux2 are also acceptable.
 
