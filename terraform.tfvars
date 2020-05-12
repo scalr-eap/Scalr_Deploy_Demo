@@ -1,5 +1,5 @@
   
-instance_type = "t2.nano"
+instance_type = "t2.small"
 name_prefix = "scalr"
 region = "us-east-1"
 ssh_key_name = "ryan"
